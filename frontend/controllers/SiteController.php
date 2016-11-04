@@ -138,6 +138,7 @@ class SiteController extends SortController
 			$lifeTime = 3600*6;  // 保存6小时 
             session_set_cookie_params($lifeTime); 
 		}
+		var_dump($session['openid']);exit();
 		$member = Member::find()->where('openid=:openid',[':openid'=>$session['openid']])->one();
 		if(empty($member)){
 			$newuser = new Member();

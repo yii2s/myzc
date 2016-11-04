@@ -75,8 +75,9 @@ class SortController extends WeixinController
                     }
                     //exit;
                 //当前产品暂停
-                $command = $connection->createCommand(sprintf('UPDATE `product` SET `status`=0,`sorted_at`=0,`updated_at`=%u WHERE `id`=%u AND `shenhe`=1,`xiugaitime`=%u',$term['now_zhouqi'],$term['id'], time() ));
+                $command = $connection->createCommand(sprintf('UPDATE `product` SET `status`=0,`sorted_at`=0,`updated_at`=%u WHERE `id`=%u AND `shenhe`=1 AND `xiugaitime`=%u',$term['now_zhouqi'],$term['id'], time() ));
                 $command->execute();
+                
                 //下一产品上线,
                 //首先上线已排序的产品
                 $command = $connection->createCommand(
@@ -124,7 +125,5 @@ class SortController extends WeixinController
             }
 
         }
-        
-        
     }
 }
